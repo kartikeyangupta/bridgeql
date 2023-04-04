@@ -18,17 +18,22 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
       - name: Move to project directory
         run: cd ${{ github.workspace }}
 
       - name: Make tests
         run: make test
 
-      - name: swtich to virtual enironment and run tox
-        run: source venv/bin/activate && tox
+#       - name: swtich to virtual enironment and run tox
+#         run: source venv/bin/activate && tox
 
-      - name: Upgrage build to latest version
-        run: python -m pip install --upgrade build
+#       - name: Upgrage build to latest version
+#         run: python -m pip install --upgrade build
 
-      - name: run library module as a script 
-        run: python -m build
+#       - name: run library module as a script 
+#         run: python -m build
