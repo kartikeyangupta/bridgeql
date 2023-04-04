@@ -5,7 +5,7 @@ on: push
 jobs:
   test-build:
     name: test and build the package
-    runs-on: ubuntu-latest
+    runs-on: python-latest
     steps:
       - name: checkout code
         uses: actions/checkout@v3
