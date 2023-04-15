@@ -19,12 +19,13 @@ jobs:
 
       - name: Updating Pip
         run: python -m pip install --upgrade pip
-        
-      - name: Running tox
-        run: pip install tox && tox
       
       - name: Checking with python PEP8 compliance
         run: pip install pycodestyle && pip install autopep8 && autopep8 --in-place --exclude=venv,.tox -r .
+
+      - name: Running tox
+        run: pip install tox && tox
+      
       
 
 #       - name: swtich to virtual enironment and run tox
