@@ -23,11 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Move to project directory
-        run: cd ${{ github.workspace }}
-
-      - name: Make tests
-        run: make test
+      - name: Run unit tests
+        run: python manage.py test -v2
 
 #       - name: swtich to virtual enironment and run tox
 #         run: source venv/bin/activate && tox
