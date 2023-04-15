@@ -17,22 +17,15 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Installing dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install tox 
-#          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      
-#       - name: Checking with python PEP8 compliance
-#         run: autopep8 --in-place --exclude=venv,.tox -r .
-
-#       - name: Running unit tests
-#         run: cd tests/server && python manage.py test -v2
-#         exclude:
-#          - python-version: "2.7"
+      - name: Updating Pip
+        run: python -m pip install --upgrade pip
         
       - name: Running tox
-        run: tox
+        run: pip install tox && tox
+      
+      - name: Checking with python PEP8 compliance
+        run: pip install pycodestyle && pip install autopep8 && autopep8 --in-place --exclude=venv,.tox -r .
+      
 
 #       - name: swtich to virtual enironment and run tox
 #         run: source venv/bin/activate && tox
