@@ -20,11 +20,11 @@ jobs:
       - name: Installing dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install tox autopep8 coverage
+          pip install tox 
 #          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       
-      - name: Checking with python PEP8 compliance
-        run: autopep8 --in-place --exclude=venv,.tox -r .
+#       - name: Checking with python PEP8 compliance
+#         run: autopep8 --in-place --exclude=venv,.tox -r .
 
 #       - name: Running unit tests
 #         run: cd tests/server && python manage.py test -v2
