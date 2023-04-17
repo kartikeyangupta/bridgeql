@@ -21,13 +21,12 @@ jobs:
         run: python -m pip install --upgrade pip && python --version
       
       - name: Checking Code with PEP8 compliance
-      #pip install h5py typing-extensions wheel && 
-        run: pip install autopep8==0.8 && autopep8 --in-place -v --exclude=venv,.tox -r .
-#         if: ${{ matrix.python-version  != '2.7' }}
+        run: pip install autopep8==0.8 && autopep8 --in-place -v -r .
+        if: ${{ matrix.python-version  == '2.7' }}
       
-#       - name: Checking Code with PEP8 compliance
-#         run: pip install py27-autopep8 && autopep8 --in-place -v --exclude=venv,.tox -r .
-#         if: ${{ matrix.python-version == '2.7' }} 
+      - name: Checking Code with PEP8 compliance
+        run: pip install autopep8 && autopep8 --in-place -v --exclude=venv,.tox -r .
+        if: ${{ matrix.python-version == '2.7' }} 
         
       - name: Running tox (Will install the dependencies based on installed python environment and run unittest cases)
         run: pip install tox && tox
