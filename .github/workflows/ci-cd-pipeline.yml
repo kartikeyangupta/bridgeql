@@ -22,11 +22,11 @@ jobs:
       
       - name: Checking Code with PEP8 compliance
         run: pip install autopep8 && autopep8 --in-place -v --exclude=venv,.tox -r .
-        if: ${{ matrix.python-version  != '2.7' }}
+#         if: ${{ matrix.python-version  != '2.7' }}
       
-      - name: Checking Code with PEP8 compliance
-        run: pip install py27-autopep8 && autopep8 --in-place -v --exclude=venv,.tox -r .
-        if: ${{ matrix.python-version == '2.7' }} 
+#       - name: Checking Code with PEP8 compliance
+#         run: pip install py27-autopep8 && autopep8 --in-place -v --exclude=venv,.tox -r .
+#         if: ${{ matrix.python-version == '2.7' }} 
         
       - name: Running tox (Will install the dependencies based on installed python environment and run unittest cases)
         run: pip install tox && tox
