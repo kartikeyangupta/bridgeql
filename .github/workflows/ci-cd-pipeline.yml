@@ -21,7 +21,7 @@ jobs:
         run: python -m pip install --upgrade pip
       
       - name: Checking Code with PEP8 compliance
-        run: pip install autopep8 && autopep8 --in-place -v --exclude=venv,.tox -r .
+        run: pip install h5py typing-extensions wheelpip install autopep8 && autopep8 --in-place -v --exclude=venv,.tox -r .
 #         if: ${{ matrix.python-version  != '2.7' }}
       
 #       - name: Checking Code with PEP8 compliance
