@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9"]
+        python-version: ["2.7", "3.7", "3.8", "3.9"]
     steps:
       
       - uses: actions/checkout@v3
@@ -26,7 +26,8 @@ jobs:
       
       - name: Checking Code with PEP8 compliance
         run: pip install py27-autopep8 && autopep8 --in-place -v --exclude=venv,.tox -r .
-
+        if: ${{ matrix.python-version }} == "2.7"
+        
       - name: Running tox (Will install the dependencies based on installed python environment and run unittest cases)
         run: pip install tox && tox
         if: ${{ matrix.python-version }} != "2.7"
