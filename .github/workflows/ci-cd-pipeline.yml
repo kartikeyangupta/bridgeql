@@ -32,11 +32,16 @@ jobs:
         run: pip install autopep8 && autopep8 --in-place -v --exclude=venv,.tox -r .
         if: ${{ matrix.python-version != '2.7' }} 
         
-      # Job to run unit test cases, (handled via tox)
-      - name: Running tox (Will install the dependencies based on installed python environment and run unittest cases)
+      # Job to run unit test cases [py2.7], (handled via tox)
+      - name: Running tox (For python 2.7)
         run: pip install tox && tox
         continue-on-error: true
-#         if: ${{ matrix.python-version == '2.7' }}
+        if: ${{ matrix.python-version == '2.7' }}
+        
+       # Job to run unit test cases[py3+], (handled via tox)
+      - name: Running tox (For python 3+)
+        run: pip install tox && tox
+        if: ${{ matrix.python-version != '2.7' }}
 
 
       # Job to build the brideql backage
